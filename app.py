@@ -30,14 +30,14 @@ def play():
             print(hidden_word)
 
             if right_counter >= len(word_list[random_word]) - 1:
-                print("You win !")
+                print(f"You win !\nThe word was: {word_list[random_word]}")
                 break
         else:
             wrong_counter += 1
-            print(f"Wrong guess !\nRemaining tries: {max_tries - wrong_counter}\n")
+            print(f"\nWrong guess !\nRemaining tries: {max_tries - wrong_counter}\n")
             print(hidden_word)
             if wrong_counter >= max_tries:
-                print(f"You lost !\nThe hidden word was: {word_list[random_word]}")
+                print(f"\nYou lost !\nThe hidden word was: {word_list[random_word]}")
                 break
 
 
