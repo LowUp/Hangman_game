@@ -1,9 +1,11 @@
 from itertools import repeat
 import random
+import string
 
 word_bank = open("Words.txt", "r")
 word_list = word_bank.readlines()
 word_list2 = word_list.copy()
+alphabet = string.ascii_letters
 
 random_word = random.randint(0, len(word_list))
 
@@ -23,7 +25,7 @@ def play():
 
         user_input = input("Enter a letter: ").lower()
 
-        if user_input in word_list[random_word].lower():
+        if (user_input in word_list[random_word].lower()) and (user_input in alphabet):
             # Get the letter index
             index = word_list[random_word].index(user_input)
 
