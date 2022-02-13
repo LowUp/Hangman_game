@@ -3,6 +3,7 @@ import random
 
 word_bank = open("Words.txt", "r")
 word_list = word_bank.readlines()
+word_list2 = word_list.copy()
 
 random_word = random.randint(0, len(word_list))
 
@@ -16,28 +17,32 @@ def play():
     right_counter = 0
     max_tries = 8
 
-    #print(word_list[random_word])
     print(hidden_word)
 
     while True:
 
         user_input = input("Enter a letter: ").lower()
 
-        if word_list[random_word].lower().__contains__(user_input):
+        if user_input in word_list[random_word].lower():
+            # Get the letter index
             index = word_list[random_word].index(user_input)
+
             hidden_word[index] = user_input
+            word_list[random_word] = word_list[random_word].replace(user_input, "_")
             right_counter += 1
             print(hidden_word)
+            #print(word_list[random_word])
 
             if right_counter >= len(word_list[random_word]) - 1:
-                print(f"You win !\nThe word was: {word_list[random_word]}")
+                print(f"You win !\nThe word was: {word_list2[random_word]}")
                 break
         else:
             wrong_counter += 1
             print(f"\nWrong guess !\nRemaining tries: {max_tries - wrong_counter}\n")
             print(hidden_word)
+
             if wrong_counter >= max_tries:
-                print(f"\nYou lost !\nThe hidden word was: {word_list[random_word]}")
+                print(f"\nYou lost !\nThe hidden word was: {word_list2[random_word]}")
                 break
 
 
