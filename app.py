@@ -12,16 +12,14 @@ random_word = random.randint(0, len(word_list))
 
 def play():
     hidden_word = []
-
     hidden_word += list(repeat("_", len(word_list[random_word]) - 1))
-
-    used_character = []
 
     wrong_counter = 0
     right_counter = 0
     max_tries = 8
     word: str = " ".join(word_list2[random_word].split())
 
+    used_character = []
     used_character += list(repeat(".", max_tries))
 
     print(hidden_word)
